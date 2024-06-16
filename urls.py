@@ -14,6 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# python3 manage.py runserver
+# python3 manage.py --help
+
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse #3:
@@ -31,3 +34,6 @@ urlpatterns = [
     path('blog/', func_blog), #1:
     path('', func_home)
 ]
+
+# python3 manage.py startapp home
+# python3 manage.py startapp blog
