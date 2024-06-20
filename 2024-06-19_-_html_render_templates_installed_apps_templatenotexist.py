@@ -1,23 +1,21 @@
-#******************************
-#my_project/project/settings.py: Agora você volta no project/settings.py em "INSTALLED_APPS = []" e adiciona 'home', veja abaixo:
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'home',
-    'blog',
+#my_project/project/settings.py: #7:
+INSTALLED_APPS = [ #1:
+    'django.contrib.admin', #2:
+    'django.contrib.auth', #2:
+    'django.contrib.contenttypes', #2:
+    'django.contrib.sessions', #2:
+    'django.contrib.messages', #2:
+    'django.contrib.staticfiles', #2:
+    'home', #3:
+    'blog', #3:
 ]
 
-#************************
 #my_project/home/views.py
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse #4:
+from django.shortcuts import render #5:
 def func_home(request):
     print('func_home: yyy')
-    return render(request, 'home/index.html')
+    return render(request, 'home/index.html') #6:
 #my_project/blog/views.py:
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -28,11 +26,8 @@ def func_example(request):
     print('func_blog: xxx2')
     return render(request, 'blog/example.html')
 
-#*****************************************
-#my_project/home/templates/home/index.html: Dentro de qualquer app, podemos criar uma pasta chamada "templates" e aqui criar os arquivos que quisermos, neste caso, index.html.
-# #Obs: Coloque estes arquivos dentro da pasta de mesmo nome do app, para evitar conflitos. 
-# #Continua: Criamos um arquivo "index.html" e dentro dele digitamos exclamação "!" e aparecerá um código html, devemos adicionar entre <body> a linha <h1>.
-<!DOCTYPE html>
+#my_project/home/templates/home/index.html: 
+<!DOCTYPE html> #8: #9: #10:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,9 +63,8 @@ def func_example(request):
 </body>
 </html>
 
-#***********************
-#my_project/home/apps.py: Nosso site apresentou erro de "TemplateDoesNotExists at/", então temos que ir na pasta "project/home/app.py" e verificar o "name" e se o código está correto desta forma:
-from django.apps import AppConfig
+#my_project/home/apps.py: 
+from django.apps import AppConfig #11:
 class HomeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'home'
