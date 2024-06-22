@@ -3,7 +3,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'base'
+            BASE_DIR / 'base' #1:
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -18,11 +18,10 @@ TEMPLATES = [
 ]
 
 #my_project/home/views.py:
-from django.http import HttpResponse
 from django.shortcuts import render
 def func_home(request):
     print('func_home: yyy')
-    return render(request, 'global/base.html') #1:
+    return render(request, 'global/base.html') #2:
 
 #my_project/base/global/base.html:
 <!DOCTYPE html>
@@ -33,8 +32,18 @@ def func_home(request):
     <title>Document</title>
 </head>
 <body>
-    <h1>{% block texto %} BASE {% endblock texto %}</h1>
+    <h1>{% block text %} BASE {% endblock text %}</h1> #3:
 </body>
 </html>
 
-#1: {% extends 'global/base.html' %}.
+#########################
+
+#my_project/home/views.py:
+from django.shortcuts import render
+def func_home(request):
+    print('func_home: yyy')
+    return render(request, 'home/index.html') #4:
+
+#my_project/home/templates/home/index.html:
+{% extends 'global/base.html' %} #5:
+{% block text %} CHANGE TEXT {% endblock text %} #6:
