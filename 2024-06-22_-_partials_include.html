@@ -1,0 +1,25 @@
+#my_project/home/templates/home/index.html:
+{% extends 'global/base.html' %} #1:
+
+#my_project/base/global/base.html:
+<body>
+    <h1>{% block text %} BASE 01 {% endblock text %}</h1> #2:
+</body>
+{% include 'global/partials/head.html' %} #3:
+</html>
+
+#my_project/base/partials/head.html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Include Worked</title> #4:
+</head>
+<body>
+    <h1>Aaaaaaaah</h1> #5:
+    <h1>Aaaaaaaah</h1>
+    <h1>Aaaaaaaah</h1>
+    <h1>Aaaaaaaah</h1>
+    <h1>Aaaaaaaah</h1>
+    <h1>Aaaaaaaah</h1>
