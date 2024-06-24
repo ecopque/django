@@ -1,0 +1,32 @@
+#my_project/base/global/base.html:
+{% include 'global/partials/head.html' %}
+{% include 'global/partials/menu.html' %}
+
+<h1>{% block text %}{% endblock text %}</h1>
+
+<main class="content">
+    {% block posts %}{% endblock posts %}
+</main>
+
+</body>
+</html>
+
+#my_project/blog/templates/blog/index.html:
+{% extends 'global/base.html' %}
+{% block text %} {{text}} {% endblock text %}
+
+{% block posts %}
+    {% include 'global/partials/postblock.html' %}
+{% endblock posts %}
+
+#my_project/base/global/partials/postblock.html:
+<article class="post">
+    <header>
+        <h2 class="post__title">
+            Pale blue dot
+        </h2>
+    </header>
+    <div class="post__body">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores laboriosam sunt quibusdam nisi fugit soluta quasi ipsa ut dolore, velit iusto laborum ullam incidunt labore sit consequatur dolores, alias odit.
+    </div>
+</article>
