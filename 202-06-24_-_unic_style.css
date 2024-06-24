@@ -1,0 +1,20 @@
+#my_project/base/global/static/global/css/style.css:
+* { #1:
+    margin: 0; #2:
+    padding: 0; #3:
+    box-sizing: border-box; #4:
+}
+
+#my_project/base/global/partials/head.html:
+{% load static %} <!DOCTYPE html> #5:
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    # <!-- <title>Include Worked</title>
+    # <link rel="stylesheet" href="{% static 'home/css/blue.css' %}">
+    # <link rel="stylesheet" href="{% static 'global/css/red.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}"> #6:
+</head>
+<body>
+    <h1>Aaaaaaaah</h1>
