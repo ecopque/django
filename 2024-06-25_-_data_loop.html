@@ -1,0 +1,86 @@
+#my_project/blog/views.py:
+from django.shortcuts import render
+from blog.data import var_posts
+
+def func_blog(request):
+    print('func_blog: xxx3')
+    var_context = {
+        'key_text': 'We are home!!!',
+        'key_posts': var_posts #1:
+        }
+    return render(request, 'blog/index.html', context=var_context)
+
+def func_example(request):
+    print('func_blog: xxx2')
+    return render(request, 'blog/example.html')
+
+#my_project/blog/templates/blog/index.html:
+{% extends 'global/base.html' %}
+{% block text %} {{key_text}} {% endblock text %} #3:
+
+{% block posts %}
+    {% for var_post in key_posts %} #4:
+        {% include 'global/partials/postblock.html' %} #5:
+    {% endfor %}
+{% endblock posts %}
+
+#my_project/base/global/base.html:
+{% include 'global/partials/head.html' %}
+{% include 'global/partials/menu.html' %}
+
+<h1>{% block text %}{% endblock text %}</h1>
+
+<main class="content">
+    {% block posts %}{% endblock posts %}
+</main>
+
+</body>
+</html>
+
+#my_project/base/global/partials/menu.html:
+<nav>
+    <ul>
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+            <a href="{% url 'blog' %}">Blog</a>
+        </li>
+        <li>
+            <a href="{% url 'example' %}">Example</a>
+        </li>
+    </ul>
+</nav>
+
+#my_project/base/global/partials/head.html:
+{% load static %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+</head>
+<body>
+    <h1>Mensagem do HEAD.HTML</h1>
+
+#my_project/base/static/global/css/style.css: (...)
+#my_project/base/global/partials/postblock.html:
+<article class="post">
+    <header>
+        <h2 class="post__title">
+            {{var_post.title}} #6:
+        </h2>
+    </header>
+    <div class="post__body">
+        {{var_post.body}} #7:
+    </div>
+</article>
+
+#my_project/blog/data.py:
+var_posts = [
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  }, #(...)
