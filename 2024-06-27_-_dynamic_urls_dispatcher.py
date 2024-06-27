@@ -15,10 +15,10 @@ urlpatterns = [
 from django.urls import path
 from blog import views as blog_views #my_project/blog/views.py
 
-app_name = 'blog' #2:
+app_name = 'blog'
 urlpatterns = [
     path('', blog_views.func_blog, name='blog_home'), #my_project/blog/views.py
-    path('post/<int:id>', blog_views.func_post, name='blog_post'), #my_project/blog/views.py #1:
+    path('post/<int:id>/', blog_views.func_post, name='blog_post'), #my_project/blog/views.py
     path('example/', blog_views.func_example, name='blog_example'), #my_project/blog/views.py
 ]
 
@@ -101,46 +101,6 @@ def func_example(request):
 </head>
 <body>
     <h1>Mensagem do HEAD.HTML</h1>
-
-/* #my_project/base/static/global/css/style.css: */
-
-/* Reset */
-*,
-*:after,
-*:before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.6rem;
-  background: yellowgreen;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.content {
-  display: grid;
-  gap: 1.5rem;
-  padding: 1.5rem;
-}
-
-.post {
-  background: yellow;
-  padding: 1.5rem;
-  box-shadow: 5px 2px 5px rgba(0, 0, 0, 90%);
-}
-
-@media (min-width: 600px) {
-  .content {
-    grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
-  }
-}
 
 {#my_project/base/global/partials/postblock.html:#}
 
