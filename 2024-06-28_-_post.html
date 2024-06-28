@@ -1,0 +1,28 @@
+#my_project/blog/views.py:
+
+from django.shortcuts import render
+from blog.data import var_posts #my_project/blog/data.py
+
+def func_blog(request):
+    print('func_blog: blog/views.py')
+    var_context = {
+        'key_text': 'We are home: blog',
+        'key_posts': var_posts #my_project/blog/data.py
+        }
+    return render(request, 'blog/index.html', context=var_context)
+
+def func_post(request, post_id):
+    print('func_post: url: /blog/post/x=', post_id)
+    var_foundpost = None
+    for i_post in var_posts:
+        if i_post['id'] == post_id:
+            var_foundpost = i_post
+            break
+    var_context = {
+        'var_post': var_foundpost #my_project/blog/data.py
+    }
+    return render(request, 'blog/post.html', context=var_context)
+
+def func_example(request):
+    print('func_example: blog/views.py')
+    return render(request, 'blog/example.html')
