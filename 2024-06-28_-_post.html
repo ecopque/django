@@ -19,7 +19,8 @@ def func_post(request, post_id):
             var_foundpost = i_post
             break
     var_context = {
-        'var_post': var_foundpost #my_project/blog/data.py
+        'var_post': var_foundpost, #my_project/blog/data.py
+        'var_title': var_foundpost['title'] + ' - '
     }
     return render(request, 'blog/post.html', context=var_context)
 
